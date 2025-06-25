@@ -107,6 +107,10 @@ public class GenericAssayServiceImpl implements GenericAssayService {
       String projection)
       throws MolecularProfileNotFoundException {
     List<GenericAssayData> result = new ArrayList<>();
+    
+    if(molecularProfileIds.isEmpty()) {
+        throw new MolecularProfileNotFoundException("No molecular profile found - molecularProfileIds is empty.");
+    }
 
     SortedSet<String> distinctMolecularProfileIds = new TreeSet<>(molecularProfileIds);
 
